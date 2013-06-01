@@ -66,7 +66,10 @@ def main():
         # insert information into the start of the json, but could be anywhere
         i = 0
         for plugin in plugins:
-            j.insert(i, plugin())
+            try:
+                j.insert(i, plugin())
+            except Exception:
+                pass
             i += 1
         # and echo back new encoded json
         print_line(prefix + json.dumps(j))
